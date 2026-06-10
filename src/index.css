@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --color-background-1: #fffcf0;
+    --color-background-2: #100f0f;
+
+    --color-foreground-1: #100f0f;
+    --color-foreground-2: #cecdc3;
+
+    --font-heading: 48pt;
+    --font-main-link: 20pt;
+
+    @media (prefers-color-scheme: dark) {
+        --color-background-1: #282726;
+        --color-foreground-1: var(--color-foreground-2);
+    }
+}
+
+h1 {
+    padding: 64px 0;
+    font-family: "Fairfax HD", monospace;
+    font-size: var(--font-heading);
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    scroll-snap-type: y proximity;
+    background-color: var(--color-background-1);
+
+    > section {
+        width: 100%;
+        height: 100vh;
+        padding: 0 64px;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+    }
+}
+
+section#section-home {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-foreground-1);
+
+    > div:last-child {
+        padding-bottom: 28px;
+
+        a {
+            padding: 32px 48px;
+            font-family: "Fairfax HD", monospace;
+            font-size: var(--font-main-link);
+            background: linear-gradient(
+                to bottom,
+                var(--color-background-2) 0%,
+                var(--color-background-2) 100%
+            );
+            background-position: 0 100%;
+            background-repeat: repeat-x;
+            background-size: 8px 8px;
+            color: var(--color-foreground-1);
+            transition:
+                0.05s ease-out background-size,
+                color;
+
+            &:hover {
+                text-decoration: none;
+                color: var(--color-foreground-2);
+                background-size: 4px calc(64px + var(--font-main-link));
+            }
+
+            @media (prefers-color-scheme: dark) {
+                background: linear-gradient(
+                    to bottom,
+                    var(--color-foreground-1) 0%,
+                    var(--color-foreground-1) 100%
+                );
+                background-position: 0 100%;
+                background-repeat: repeat-x;
+                background-size: 8px 8px;
+
+                &:hover {
+                    color: var(--color-background-2);
+                }
+            }
+        }
+    }
+}
+
+section#section-projects {
+    background-color: var(--color-background-2);
+    color: var(--color-foreground-2);
+}
+
+section#section-about {
+    background-color: var(--color-background-2);
+    color: var(--color-foreground-2);
+}
